@@ -1,0 +1,306 @@
+<title>Cafeteria </title>
+
+    <canvas id="final111"></canvas>
+
+    <script> 
+   const canvas = document.getElementById("final111");
+    canvas.width = 1270;
+    canvas.height = 710;
+
+
+
+
+
+    const context = canvas.getContext("2d");
+    
+
+    const backImg = new Image();
+    backImg.src ="https://png.pngtree.com/thumb_back/fh260/back_pic/05/12/49/325998f0b44dbb2.jpg";
+    const waiterImg = new Image();
+    waiterImg.src="http://exchangedownloads.smarttech.com/public/content/85/85854eb2-5b52-4ab0-8e08-8de790b4a242/previews/medium/0001.png";
+    const barImg = new Image();
+    barImg.src="https://hanslodge.com/data_images/362779.gif";
+   
+    const pers1 = new Image();
+    pers1.src ="https://images.vexels.com/media/users/3/127303/isolated/preview/d2d88005bdd8195bb5930634e712c8de-businessman-profession-cartoon-by-vexels.png";
+    const pers2 = new Image();
+    pers2.src ="https://images.vexels.com/media/users/3/145744/isolated/preview/23266213696f77c4e3f1e5b6a7d7f12e-man-hands-in-pockets-illustration-by-vexels.png";
+    const pers3 = new Image();
+    pers3.src ="https://i.graphicmama.com/uploads/2016/2/Jenna-Elegance-56cc5f77c8445.png";
+    const pers4 = new Image();
+    pers4.src ="https://image.samsung.com/cn/smartphones/galaxy-s9/ar/images/galaxy-s9_ar_my_emoji_002.png";
+    const pers5 = new Image();
+    pers5.src ="https://upload.wikimedia.org/wikipedia/hy/1/10/Daria_Morgendorffer.png";
+    const pers6 = new Image();
+    pers6.src ="https://i.pinimg.com/originals/bd/6f/f6/bd6ff618848e43b2b79eed0b77acc4bb.png";
+    const pers7 = new Image();
+    pers7.src ="https://images.vexels.com/media/users/3/130955/isolated/preview/08c00870e43aa206e86e5f3b3495e902-hipster-girl-cartoon-character-by-vexels.png";
+    const pers8 = new Image();
+    pers8.src ="https://i.pinimg.com/originals/d6/70/2b/d6702b0615669b7e6845af41d67d6ae8.png";
+
+
+    
+    const burgerImg = new Image();
+    burgerImg.src="http://www.baby-flash.com/wordpress/wp-content/uploads/2016/03/panino1.jpg";
+    const pizzaImg = new Image();
+    pizzaImg.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSkI8LQkMig4uVm6YZAAw8x2WPaOMrRmm3slFibp6ZNqHTGZlN";
+    const spaghettiImg =new Image();
+    spaghettiImg.src="https://png.pngtree.com/element_origin_min_pic/16/10/31/e4bfa19e205800f02f7dc87997c456d9.jpg";
+    const sushiImg = new Image();
+    sushiImg.src="https://image.freepik.com/vetores-gratis/colecao-de-icones-de-sushi_1096-294.jpg"; 
+
+
+
+    // class game {
+    //     constructor(left,top, img){
+            
+    //     this.left = left;
+    //     this.top = 75;
+    //     this.width = 50;
+    //     this.height = 50;
+    //     this.img = img;
+    //     }
+    //     draw(context){
+    //         context.drawImage(this.img,this.left,this.top.this.width,this.height);
+    //     }
+    // }
+    // const burger = new game(310,75,burgerImg);
+    // const pizza = new game(370,75,pizzaImg);
+    // const spaghetti = new game(430, 75, spaghettiImg);
+    // const sushi = new game(430,75,sushiImg); 
+const menu ={
+    burgerImg:{
+        img: burgerImg,
+        data:{
+            left: 310,
+            top:75,
+            width:50,
+            height:50,
+                
+             
+        },
+    },
+    pizzaImg:{
+        img: pizzaImg,
+        data:{
+            left: 370,
+            top:75,
+            width:50,
+            height:50
+        }
+    },
+    spaghettiImg:{
+        img: spaghettiImg,
+        data:{
+            left: 430,
+            top:75,
+            width:50,
+            height:50
+        }
+    },
+    sushiImg:{
+        img: sushiImg,
+        data:{
+            left: 490,
+            top:75,
+            width:50,
+            height:50
+        }
+    }
+}
+const menu1 ={
+    burgerImg:{
+        img: burgerImg,
+        data:{
+            left: 310,
+            top:75,
+            width:50,
+            height:50,
+                
+             
+        },
+    },
+    pizzaImg:{
+        img: pizzaImg,
+        data:{
+            left: 370,
+            top:75,
+            width:50,
+            height:50
+        }
+    },
+    spaghettiImg:{
+        img: spaghettiImg,
+        data:{
+            left: 430,
+            top:75,
+            width:50,
+            height:50
+        }
+    },
+    sushiImg:{
+        img: sushiImg,
+        data:{
+            left: 490,
+            top:75,
+            width:50,
+            height:50
+        }
+    }
+}
+menu.burgerImg.img.src="http://www.baby-flash.com/wordpress/wp-content/uploads/2016/03/panino1.jpg";
+menu.pizzaImg.img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSkI8LQkMig4uVm6YZAAw8x2WPaOMrRmm3slFibp6ZNqHTGZlN"
+menu.spaghettiImg.img.src="https://png.pngtree.com/element_origin_min_pic/16/10/31/e4bfa19e205800f02f7dc87997c456d9.jpg"
+menu.sushiImg.img.src="https://image.freepik.com/vetores-gratis/colecao-de-icones-de-sushi_1096-294.jpg";
+   
+    
+menu1.burgerImg.img.src="http://www.baby-flash.com/wordpress/wp-content/uploads/2016/03/panino1.jpg";
+menu1.pizzaImg.img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSkI8LQkMig4uVm6YZAAw8x2WPaOMrRmm3slFibp6ZNqHTGZlN"
+menu1.spaghettiImg.img.src="https://png.pngtree.com/element_origin_min_pic/16/10/31/e4bfa19e205800f02f7dc87997c456d9.jpg"
+menu1.sushiImg.img.src="https://image.freepik.com/vetores-gratis/colecao-de-icones-de-sushi_1096-294.jpg";
+
+
+    const rand = function(num) {
+     return Math.floor(Math.random() * num) + 1;
+     };
+
+    const waiter = {
+        x:150,
+        y:350,
+        width:200,
+        height:300,
+        img:waiterImg,
+        draw:function(){
+            context.drawImage(this.img,this.x,this.y,this.width,this.height);
+            
+
+        }
+
+    }
+   
+    const people = function(count){
+        const base = [];
+        let pers = [pers1,pers2,pers3,pers4,pers5,pers6,pers7,pers8];
+        for (let i = 0; i <count; i++) {
+    
+                
+            
+            let img = pers[rand(pers.length)-1]
+            pers = pers.filter(per=> per.src!== img.src);
+
+            base[base.length] =  {
+                x:canvas.width+ i*5 * rand(canvas.width),
+                y:350,
+                xDir:-1,
+                yDir:1,
+                delta:3,
+                width:200,
+                height:300,
+                img:img,
+                draw:function(){
+                    context.drawImage(this.img,this.x,this.y,this.width,this.height);
+                },
+                update1: function(stopCord){   
+                    this.x += this.xDir * this.delta;
+                    if(this.x <= stopCord){
+                        this.delta=0;
+                    }
+                }
+            }
+     }
+     return base;
+    }
+
+
+
+
+
+    const peoPle = people(4).sort(function(a,b){
+        return a.x >b.x ?  1 : a.x < b.x ? -1 : 0;  
+    });
+
+    
+
+    const draw = function (){
+        for (let i = 0; i < peoPle.length; i++) {
+        
+        setTimeout(peoPle[i].draw(), i * 1000);
+    
+       }
+
+     };
+
+
+    const update = function(){
+       for (let i = 0; i < peoPle.length; i++) {
+        
+        let stopCord = 350;
+        
+        if(peoPle[i-1] && !peoPle[i-1].delta){
+            if((peoPle[i-1] && (  peoPle[i-1].x + 200 ))){
+                stopCord = (peoPle[i-1] && (  peoPle[i-1].x + 200 ))
+                
+            }
+        
+          
+        }
+        
+
+          peoPle[i].update1(stopCord);
+
+       }
+          
+
+    }
+     
+    const addMenu = function(){
+        for (var key in menu) {
+            
+            context.drawImage(menu[key].img, menu[key].data.left, menu[key].data.top,menu[key].data.height,menu[key].data.width);
+        }
+    }
+    const addMenu1 = function(){
+        for (var key in menu1) {
+            
+            context.drawImage(menu1[key].img, menu1[key].data.left, menu1[key].data.top,menu1[key].data.height,menu1[key].data.width);
+        }
+    }
+
+    const loop = function(){
+        context.drawImage(backImg, 0, 0,canvas.width,canvas.height);
+        addMenu()
+        addMenu1();
+        waiter.draw();
+        draw();
+        update();
+        context.drawImage(barImg,150,470,250,230);
+        requestAnimationFrame(loop);
+    }  
+  
+    
+    loop(); 
+
+
+canvas.addEventListener('click', function(event) {
+    let x = event.pageX;
+    let  y = event.pageY;
+    for (let key in menu) {
+        console.log(menu[key].data)
+        console.log(menu[key].data.top, menu[key].data.top + menu[key].data.height,'------',y )
+        console.log(menu[key].data.left, menu[key].data.left + menu[key].data.width,'------',x )
+        if (y > menu[key].data.top && y < menu[key].data.top + menu[key].data.height 
+            && x > menu[key].data.left && x < menu[key].data.left + menu[key].data.width) {
+                //  alert(key);
+                let change = 70;
+                 menu[key].data.left = change;
+                 menu[key].data.top = 0;
+                context.drawImage(menu[key].img, menu[key].data.left, menu[key].data.top,menu[key].data.height,menu[key].data.width);
+            //   menu[key].draw();
+        
+    }
+    }
+}, false);
+
+
+    
+    </script>
