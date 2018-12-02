@@ -104,9 +104,6 @@ const food = [
         darkbeerImg  
     ]
     const menu = food.concat(drink);
-        
-    
-    console.log(menu);
   
     
     const rand = function(num) {
@@ -123,15 +120,32 @@ const food = [
             
         }
     }
+
+
+    const iwish = function(){
+    base = [];
+    let position = 50;
+    for (i = 0; i < 2; i++){
+        base[base.length] =  {
+                x:460+(i*position),
+                y:260,
+                width:30,
+                height:30,
+                img:menu[rand(menu.length)-1],
+                draw:function(){
+                    context.drawImage(this.img,this.x,this.y,this.width,this.height);
+                },
+    }
+
+}
+return base;
+}
    
     const people = function(count){
         const base = [];
         let pers = [pers1,pers2,pers3,pers4,pers5,pers6,pers7,pers8];
         for (let i = 0; i <count; i++) {
-    
-                
-            
-            let img = pers[rand(pers.length)-1];
+          let img = pers[rand(pers.length)-1];
             pers = pers.filter(per=> per.src!== img.src);
             base[base.length] =  {
                 x:canvas.width+ i*5 * rand(canvas.width),
@@ -143,7 +157,7 @@ const food = [
                 height:300,
                 array:[],
                 img:img,
-                
+                wish: iwish(),
                 draw:function(){
                     context.drawImage(this.img,this.x,this.y,this.width,this.height);
                 },
@@ -157,26 +171,10 @@ const food = [
      }
      return base;
     }
-    const wishdish = function(count){
-        let position = 50;
-        base = [];
-        for(i = 0;i<count;i++){
-              base[base.length] =  {
-                x:460+(i*position),
-                y:260,
-                width:30,
-                height:30,
-                isacc: false,
-                img:menu[rand(menu.length)-1],
-                draw:function(){
-                    context.drawImage(this.img,this.x,this.y,this.width,this.height);
-                },
-            }
-        }
-     
-     return base;
-    }
-      
+
+
+
+    
     const sky = {
                 x:350,
                 y:230,
@@ -188,20 +186,20 @@ const food = [
                 },
                 
                 }
+
+
+
 const peoPle = people(8).sort(function(a,b){
         return a.x >b.x ?  1 : a.x < b.x ? -1 : 0;  
     });
-    const wishDish = wishdish(5);
-//    let wisharr = [];
-//     for(let i = 0; i < wishDish.length; i++){
-//        peoPle[i].array[i] = {drinkFood: wishDish[i].img}
-//     }
-//     console.log(peoPle[2]);
+console.log(peoPle[0].wish[0].img)
 
-
-
-
-
+    let wisharr = [];
+    for(let i = 0; i < 1; i++){
+        wisharr[i] = peoPle[i].wish[0].img;
+        wisharr[i+1] = peoPle[i].wish[1].img;
+    }
+    console.log(wisharr);
 
 
 
@@ -227,15 +225,19 @@ const peoPle = people(8).sort(function(a,b){
             sky.x = peoPle[i].x + 70;  
             sky.draw();
         }
+    
+
+
         if(!peoPle[i].delta){
-            for (let i = 0; i < wishDish.length; i++) {
-                   wishDish[i].x=peoPle[i].x + 100;
-                    wishDish[i].draw();
-                        
+            for (let i = 0; i < 2; i++) {
+                   peoPle[i].wish[0].draw();
+                   peoPle[i].wish[1].draw();
+                   
                     }
-          
+                    
         }
-         
+
+
         peoPle[i].update1(stopCord);
           
        }
@@ -247,13 +249,18 @@ const peoPle = people(8).sort(function(a,b){
         let start= 310;
         let position = 73;
         
+
+       
         for(i=0;i < food.length; i++){
             
-    
             context.drawImage(food[i], start+(position*i), 75,65,65);
         }
-    }
-    const addDrink = function(){
+      
+                      }
+
+
+  
+                      const addDrink = function(){
         let start= 310;
         let position = 73;
         
@@ -268,14 +275,97 @@ const peoPle = people(8).sort(function(a,b){
         waiter.draw();
         context.drawImage(barImg,150,470,250,230);
     }
-    const loop = function(){
+
+
+
+                      let mainmenu = [];
+                      let starting= 310;
+                      let positioning = 73;
+                      for(i=0;i < food.length; i++){
+            
+                          mainmenu[i]= {img: food[i],
+                            isaccepted: false,
+                            data: {
+                               left: starting+(positioning*i),
+                               top: 75,
+                               width: 65,
+                               height: 65,}
+                          }
+                      }
+                      let mainmenu1 = [];
+                      let starting1 = 310;
+                      let positioning1 = 73;
+                      for(let i = 0; i < drink.length; i++){
+
+                        mainmenu1[i] = {img: drink[i],
+                            isaccepted: false,
+                            data: {
+                               left: starting1+(positioning1*i),
+                               top: 150,
+                               width: 65,
+                               height: 65,}
+                          }
+                      }
+                      let concatmenu = mainmenu.concat(mainmenu1);
+
+    console.log(concatmenu);
+  
+
+
+
+    canvas.addEventListener('click', function(event) {
+    let x = event.pageX;
+    let  y = event.pageY;
+    for (let key in concatmenu) {
+    
+            if (y > concatmenu[key].data.top && y < concatmenu[key].data.top + concatmenu[key].data.height 
+            && x > concatmenu[key].data.left && x < concatmenu[key].data.left + concatmenu[key].data.width) {
+                
+              let newObj =JSON.parse(JSON.stringify(concatmenu[key]))
+            
+              newObj.data.left =0;
+              newObj.data.top = 0;
+              newObj.img =concatmenu[key].img;
+              console.log('menu-item:',newObj.img)
+              console.log('people 0 wish 0: ', peoPle[0].wish[0].img)
+              
+              if( peoPle[0].wish[0].img===wisharr[0]  ) {
+                  console.log("trueeee");
+                  concatmenu[0].isaccepted = true;
+                  
+                  console.log(concatmenu[0].isaccepted)
+              }
+              else{
+                  console.log("falsssee");
+                  concatmenu[0].isaccepted = false;
+                  console.log(concatmenu[0].isaccepted); 
+
+              }
+           
+
+                context.drawImage(newObj.img, 0, 0,100,100);
+ }
+    }
         
+}, false);
+console.log(concatmenu)
+
+
+    const loop = function(){
+      
         feed();
         context.drawImage(menuImg ,610,0,160,50);
         addFood();
         addDrink();
         draw();
         update();
+        for(let i = 0; i < concatmenu.length; i++){
+            if(concatmenu[i].isaccepted){
+                context.drawImage(wisharr[i], 0, 0,65,65);
+                // context.drawImage(peoPle[i].wish[1].img, 0, 0,65,65);
+            }
+        }
+
         requestAnimationFrame(loop);
     
         
@@ -284,4 +374,7 @@ const peoPle = people(8).sort(function(a,b){
     
     loop(); 
     
+
+
+
     </script>

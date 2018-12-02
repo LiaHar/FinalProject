@@ -52,22 +52,36 @@
 
 
     // class game {
-    //     constructor(left,top, img){
+    //     constructor(left,top, width,height, img){
             
     //     this.left = left;
-    //     this.top = 75;
-    //     this.width = 50;
-    //     this.height = 50;
+    //     this.top = top;
+    //     this.width = width;
+    //     this.height = height;
     //     this.img = img;
     //     }
-    //     draw(context){
-    //         context.drawImage(this.img,this.left,this.top.this.width,this.height);
+    //     draw(){
+    //         context.drawImage(this.img,this.left,this.top,this.width,this.height);
     //     }
+
+    //        update() {
+    //            alert("hj");
+    //         //    context.drawImage(this.img,this.left,this.top,this.width,this.height);
+    //        }
     // }
-    // const burger = new game(310,75,burgerImg);
-    // const pizza = new game(370,75,pizzaImg);
-    // const spaghetti = new game(430, 75, spaghettiImg);
-    // const sushi = new game(430,75,sushiImg); 
+    // const burger = new game(310,75,50,50,burgerImg);
+    // const pizza = new game(370,75,50,50,pizzaImg);
+    // const spaghetti = new game(430, 75,50,50, spaghettiImg);
+    // const sushi = new game(430,75,50,50,sushiImg); 
+
+    // const burger1 = new game(0,0,50,50,burgerImg);
+    // const pizza1 = new game(0,0,50,50,pizzaImg);
+    // const spaghetti1 = new game(0, 75,50,50, spaghettiImg);
+    // const sushi1 = new game(0,75,50,50,sushiImg); 
+
+    // let dish = [burger,pizza,spaghetti,sushi]
+
+   
 const menu ={
     burgerImg:{
         img: burgerImg,
@@ -108,56 +122,55 @@ const menu ={
         }
     }
 }
-const menu1 ={
-    burgerImg:{
-        img: burgerImg,
-        data:{
-            left: 310,
-            top:75,
-            width:50,
-            height:50,
+// const menu1 ={
+//     burgerImg:{
+//         img: burgerImg,
+//         data:{
+//             left: 310,
+//             top:75,
+//             width:50,
+//             height:50,
                 
              
-        },
-    },
-    pizzaImg:{
-        img: pizzaImg,
-        data:{
-            left: 370,
-            top:75,
-            width:50,
-            height:50
-        }
-    },
-    spaghettiImg:{
-        img: spaghettiImg,
-        data:{
-            left: 430,
-            top:75,
-            width:50,
-            height:50
-        }
-    },
-    sushiImg:{
-        img: sushiImg,
-        data:{
-            left: 490,
-            top:75,
-            width:50,
-            height:50
-        }
-    }
-}
+//         },
+//     },
+//     pizzaImg:{
+//         img: pizzaImg,
+//         data:{
+//             left: 370,
+//             top:75,
+//             width:50,
+//             height:50
+//         }
+//     },
+//     spaghettiImg:{
+//         img: spaghettiImg,
+//         data:{
+//             left: 430,
+//             top:75,
+//             width:50,
+//             height:50
+//         }
+//     },
+//     sushiImg:{
+//         img: sushiImg,
+//         data:{
+//             left: 490,
+//             top:75,
+//             width:50,
+//             height:50
+//         }
+//     }
+// }
 menu.burgerImg.img.src="http://www.baby-flash.com/wordpress/wp-content/uploads/2016/03/panino1.jpg";
 menu.pizzaImg.img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSkI8LQkMig4uVm6YZAAw8x2WPaOMrRmm3slFibp6ZNqHTGZlN"
 menu.spaghettiImg.img.src="https://png.pngtree.com/element_origin_min_pic/16/10/31/e4bfa19e205800f02f7dc87997c456d9.jpg"
 menu.sushiImg.img.src="https://image.freepik.com/vetores-gratis/colecao-de-icones-de-sushi_1096-294.jpg";
-   
     
-menu1.burgerImg.img.src="http://www.baby-flash.com/wordpress/wp-content/uploads/2016/03/panino1.jpg";
-menu1.pizzaImg.img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSkI8LQkMig4uVm6YZAAw8x2WPaOMrRmm3slFibp6ZNqHTGZlN"
-menu1.spaghettiImg.img.src="https://png.pngtree.com/element_origin_min_pic/16/10/31/e4bfa19e205800f02f7dc87997c456d9.jpg"
-menu1.sushiImg.img.src="https://image.freepik.com/vetores-gratis/colecao-de-icones-de-sushi_1096-294.jpg";
+// menu1.burgerImg.img.src="http://www.baby-flash.com/wordpress/wp-content/uploads/2016/03/panino1.jpg";
+// menu1.pizzaImg.img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSkI8LQkMig4uVm6YZAAw8x2WPaOMrRmm3slFibp6ZNqHTGZlN"
+// menu1.spaghettiImg.img.src="https://png.pngtree.com/element_origin_min_pic/16/10/31/e4bfa19e205800f02f7dc87997c456d9.jpg"
+// menu1.sushiImg.img.src="https://image.freepik.com/vetores-gratis/colecao-de-icones-de-sushi_1096-294.jpg";
 
 
     const rand = function(num) {
@@ -252,24 +265,27 @@ menu1.sushiImg.img.src="https://image.freepik.com/vetores-gratis/colecao-de-icon
           
 
     }
-     
+ 
+    // for(let d = 0; d < dish.length;d++){
+    //     dish[d].draw();
+    // }
     const addMenu = function(){
         for (var key in menu) {
             
             context.drawImage(menu[key].img, menu[key].data.left, menu[key].data.top,menu[key].data.height,menu[key].data.width);
         }
     }
-    const addMenu1 = function(){
-        for (var key in menu1) {
+    // const addMenu1 = function(){
+    //     for (var key in menu1) {
             
-            context.drawImage(menu1[key].img, menu1[key].data.left, menu1[key].data.top,menu1[key].data.height,menu1[key].data.width);
-        }
-    }
+    //         context.drawImage(menu1[key].img, menu1[key].data.left, menu1[key].data.top,menu1[key].data.height,menu1[key].data.width);
+    //     }
+    // }
 
     const loop = function(){
         context.drawImage(backImg, 0, 0,canvas.width,canvas.height);
         addMenu()
-        addMenu1();
+        // addMenu1();
         waiter.draw();
         draw();
         update();
@@ -285,17 +301,30 @@ canvas.addEventListener('click', function(event) {
     let x = event.pageX;
     let  y = event.pageY;
     for (let key in menu) {
-        console.log(menu[key].data)
-        console.log(menu[key].data.top, menu[key].data.top + menu[key].data.height,'------',y )
-        console.log(menu[key].data.left, menu[key].data.left + menu[key].data.width,'------',x )
+        // console.log(menu[key].data)
+        // console.log(menu[key].data.top, menu[key].data.top + menu[key].data.height,'------',y )
+        // console.log(menu[key].data.left, menu[key].data.left + menu[key].data.width,'------',x )
         if (y > menu[key].data.top && y < menu[key].data.top + menu[key].data.height 
             && x > menu[key].data.left && x < menu[key].data.left + menu[key].data.width) {
-                //  alert(key);
-                let change = 70;
-                 menu[key].data.left = change;
-                 menu[key].data.top = 0;
-                context.drawImage(menu[key].img, menu[key].data.left, menu[key].data.top,menu[key].data.height,menu[key].data.width);
-            //   menu[key].draw();
+                
+              let newObj =JSON.parse(JSON.stringify(menu[key]))
+            
+              newObj.data.left =0;
+              newObj.data.top = 0;
+              newObj.img =menu[key].img
+// console.log(newObj);
+// console.log(newObj.img);
+// console.log(menu[key].data.top);
+            
+            //   context.drawImage(pers3.img,0,0,200,200);
+                //  menu1[key].data.left = 0;
+                //  menu1[key].data.top = 0;
+                // console.log(newObj.data.left);
+         
+                // context.drawImage(menu[key].img, 0, 0, 50, 50);
+                console.log(newObj.img)
+                context.drawImage(newObj.img, 0, 0,100,100);
+                // context.drawImage(menu[key].img, menu[key].data.left, menu[key].data.top,menu[key].data.height,menu[key].data.width);
         
     }
     }
